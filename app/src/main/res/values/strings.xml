@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">UI-Design-100</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="str_firstNameInfo">Please input your name below:</string>
+    <string name="str_firstName_sbInfo">Dropdown count: %d</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_firstFrag_next">next</string>
+</resources>
