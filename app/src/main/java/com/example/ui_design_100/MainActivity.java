@@ -15,6 +15,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public static final int FIRST_NAME_INDEX = 0;
     public static final int PHONE_NUMBER_INDEX = 1;
+    public static final int LAST_NAME_INDEX = 2;
+
+
     private List<String> dataList = new ArrayList<>();
 
     @Override
@@ -36,4 +39,5 @@ public class MainActivity extends AppCompatActivity {
             this.dataList.set(index, var);
         }
     }
+
 }

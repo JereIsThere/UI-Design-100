@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,19 +23,13 @@ import com.google.android.flexbox.FlexboxLayout;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FirstNameFragment extends Fragment {
+public class FirstNameFragment extends Fragment implements RotationDetectorInitClass.OnRotationListener {
 
     private SeekBar seekBar;
-    private TextView infoView;
     private TextView valView;
     private Resources res;
     private FlexboxLayout flexboxLayout;
-    private Button nextButton;
-
-    public FirstNameFragment() {
-        // Required empty public constructor
-    }
-
+    private RotationDetectorInitClass rotationDetectorInitClass;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,24 +43,12 @@ public class FirstNameFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         this.seekBar = view.findViewById(R.id.sb_firstName_dropdownCount);
-        this.infoView = view.findViewById(R.id.tv_firstName_Info);
         this.valView = view.findViewById(R.id.tv_firstName_sbVals);
         this.flexboxLayout = view.findViewById(R.id.ll_firstName_layout);
-        this.nextButton = view.findViewById(R.id.btn_firstName_next);
+        this.rotationDetectorInitClass = new RotationDetectorInitClass(this, this);
         res = getResources();
 
         updateTv_firstName_dropDownCount(0);
-
-        this.nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                ((MainActivity) requireActivity()).addToDataList(getName(), MainActivity.FIRST_NAME_INDEX);
-
-                NavDirections action = FirstNameFragmentDirections.actionFirstNameMainFragmentToPhoneNumberFragment();
-                Navigation.findNavController(v).navigate(action);
-            }
-        });
 
         this.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -87,7 +68,7 @@ public class FirstNameFragment extends Fragment {
         });
     }
 
-    public void updateTv_firstName_dropDownCount(int amount) {
+    private void updateTv_firstName_dropDownCount(int amount) {
         String seekBarText = String.format(res.getString(R.string.str_firstName_sbInfo), this.seekBar.getProgress());
         this.valView.setText(seekBarText);
 
@@ -109,7 +90,7 @@ public class FirstNameFragment extends Fragment {
         String[] arraySpinner = new String[]{
                 "b", " ", "c", "a", "f", "g", "d", "h", "e", "i", "k", "j", "m", "4", "n", "l", "p", "o", "r", "q", "t", "s", "v", "u", "z", "y", "x", "B", " ", "C", "A", "F", "G", "D", "H", "E", "I", "K", "J", "M", "4", "N", "L", "P", "O", "R", "Q", "T", "S", "V", "U", "Z", "Y", "X"
         };
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setMinimumWidth(100);
@@ -122,14 +103,25 @@ public class FirstNameFragment extends Fragment {
     }
 
     private String getName() {
-        String name = "";
-        boolean empty = true;
+        StringBuilder name = new StringBuilder();
 
         for (int i = 0; i < this.flexboxLayout.getFlexItemCount(); i++) {
-            name += ((Spinner) this.flexboxLayout.getFlexItemAt(i)).getSelectedItem();
+            name.append(((Spinner) this.flexboxLayout.getFlexItemAt(i)).getSelectedItem());
         }
 
-        return name;
+        return name.toString();
     }
 
+    @Override
+    public void onRotationForward() {
+        ((MainActivity) requireActivity()).addToDataList(getName(), MainActivity.FIRST_NAME_INDEX);
+
+        NavDirections action = FirstNameFragmentDirections.actionFirstNameMainFragmentToPhoneNumberFragment();
+        Navigation.findNavController(getView()).navigate(action);
+    }
+
+    @Override
+    public void onRotationBackwards() {
+
+    }
 }

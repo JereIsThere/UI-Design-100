@@ -18,5 +18,21 @@
         android:id="@+id/phoneNumberFragment"
         android:name="com.example.ui_design_100.PhoneNumberFragment"
         android:label="fragment_phone_number"
-        tools:layout="@layout/fragment_phone_number" />
+        tools:layout="@layout/fragment_phone_number">
+        <action
+            android:id="@+id/action_phoneNumberFragment_to_lastNameFragment"
+            app:destination="@id/lastNameFragment" />
+        <action
+            android:id="@+id/action_phoneNumberFragment_to_firstNameMainFragment"
+            app:destination="@id/firstNameMainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lastNameFragment"
+        android:name="com.example.ui_design_100.LastNameFragment"
+        android:label="fragment_last_name"
+        tools:layout="@layout/fragment_last_name">
+        <action
+            android:id="@+id/action_lastNameFragment_to_phoneNumberFragment"
+            app:destination="@id/phoneNumberFragment" />
+    </fragment>
 </navigation>
