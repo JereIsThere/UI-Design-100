@@ -10,19 +10,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private static MainActivity instance;
-    private final int FIRST_NAME_INDEX = 0;
-    private final int PHONE_NUMBER_INDEX = 1;
-    private ArrayList<String> dataList;
-
-    public static MainActivity getInstance() {
-        if (instance == null) {
-            instance = new MainActivity();
-        }
-        return instance;
-    }
+    public static final int FIRST_NAME_INDEX = 0;
+    public static final int PHONE_NUMBER_INDEX = 1;
+    private List<String> dataList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +29,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateView(name, context, attrs);
     }
 
-    public void addToDataList(Object var, int index) {
-
-        if (this.dataList.size() < index) {
-            this.dataList.add(index, var.toString());
+    public void addToDataList(String var, int index) {
+        if (this.dataList.size() <= index) {
+            this.dataList.add(index, var);
         } else {
-            this.dataList.set(index, var.toString());
+            this.dataList.set(index, var);
         }
     }
 }

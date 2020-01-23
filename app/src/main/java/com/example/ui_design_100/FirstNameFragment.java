@@ -62,7 +62,7 @@ public class FirstNameFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                MainActivity.getInstance().addToDataList(getName());
+                ((MainActivity) requireActivity()).addToDataList(getName(), MainActivity.FIRST_NAME_INDEX);
 
                 NavDirections action = FirstNameFragmentDirections.actionFirstNameMainFragmentToPhoneNumberFragment();
                 Navigation.findNavController(v).navigate(action);
@@ -107,25 +107,26 @@ public class FirstNameFragment extends Fragment {
     private Spinner createSpinner() {
         Spinner s = new Spinner(getContext());
         String[] arraySpinner = new String[]{
-                "1", "2", "3", "4", "5", "6", "7"
+                "b", " ", "c", "a", "f", "g", "d", "h", "e", "i", "k", "j", "m", "4", "n", "l", "p", "o", "r", "q", "t", "s", "v", "u", "z", "y", "x", "B", " ", "C", "A", "F", "G", "D", "H", "E", "I", "K", "J", "M", "4", "N", "L", "P", "O", "R", "Q", "T", "S", "V", "U", "Z", "Y", "X"
         };
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setMinimumWidth(100);
-        s.setMinimumWidth(100);
+        s.setMinimumHeight(100);
+        s.setDropDownWidth(200);
+        s.setTextAlignment(Spinner.TEXT_ALIGNMENT_CENTER);
         s.setAdapter(adapter);
 
         return s;
     }
 
     private String getName() {
-        String name = "default text";
+        String name = "";
         boolean empty = true;
 
         for (int i = 0; i < this.flexboxLayout.getFlexItemCount(); i++) {
-
-            MyLog.d(((Spinner) this.flexboxLayout.getFlexItemAt(i)).getSelectedItem());
+            name += ((Spinner) this.flexboxLayout.getFlexItemAt(i)).getSelectedItem();
         }
 
         return name;
