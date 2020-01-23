@@ -2,9 +2,7 @@ package com.example.ui_design_100;
 
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,19 +18,6 @@ public class LastNameFragment extends Fragment implements RotationDetectorInitCl
 
     private RotationDetectorInitClass rotationDetectorInitClass;
 
-
-    public LastNameFragment() {
-        // Required empty public constructor
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_last_name, container, false);
-    }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -40,6 +25,10 @@ public class LastNameFragment extends Fragment implements RotationDetectorInitCl
         this.rotationDetectorInitClass = new RotationDetectorInitClass(this, this);
 
     }
+
+    //Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character:
+    //
+    //"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$"
 
     @Override
     public void onRotationForward() {

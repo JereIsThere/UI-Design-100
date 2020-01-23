@@ -91,6 +91,11 @@ public class PhoneNumberFragment extends Fragment implements RotationDetectorIni
         this.valueView.setText(newText);
     }
 
+    private long getNumber() {
+        String str = this.seekBar1.getProgress() + "" + this.seekBar2.getProgress();
+        return Long.valueOf(str);
+    }
+
     @Override
     public void onRotationForward() {
 
@@ -98,11 +103,6 @@ public class PhoneNumberFragment extends Fragment implements RotationDetectorIni
 
         NavDirections action = PhoneNumberFragmentDirections.actionPhoneNumberFragmentToLastNameFragment();
         Navigation.findNavController(getView()).navigate(action);
-    }
-
-    private long getNumber() {
-        String str = this.seekBar1.getProgress() + "" + this.seekBar2.getProgress();
-        return Long.valueOf(str);
     }
 
     @Override
