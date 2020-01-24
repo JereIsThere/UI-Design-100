@@ -22,4 +22,6 @@
     <string name="str_tv_age_info">Please input your age:</string>
     <string name="str_tv_age_value">%d</string>
     <string name="str_age_instruction">Shake to change</string>
+
+    <string name="str_tv_birthday_info">Please input birthday:</string>
 </resources>

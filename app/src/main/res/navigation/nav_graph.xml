@@ -46,5 +46,17 @@
         <action
             android:id="@+id/action_ageFragment_to_lastNameFragment"
             app:destination="@id/lastNameFragment" />
+        <action
+            android:id="@+id/action_ageFragment_to_birthdayFragment"
+            app:destination="@id/birthdayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/birthdayFragment"
+        android:name="com.example.ui_design_100.BirthdayFragment"
+        android:label="fragment_birthday"
+        tools:layout="@layout/fragment_birthday">
+        <action
+            android:id="@+id/action_birthdayFragment_to_ageFragment"
+            app:destination="@id/ageFragment" />
     </fragment>
 </navigation>

@@ -31,6 +31,7 @@ public class LastNameFragment extends Fragment implements RotationDetectorInitCl
     private Pattern p = Pattern.compile("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])(?=.*\\s)[A-Za-z\\d\\s@$!%*?&]{12,13}$/g");
     private TextView regexCheckView;
     private EditText inputField;
+    private boolean b = false;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class LastNameFragment extends Fragment implements RotationDetectorInitCl
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String text = inputField.getText().toString();
                 Matcher m = p.matcher(text);
-                boolean b = Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])(?=.*\\s)[A-Za-z\\d\\s@$!%*?&]{12,14}", text);
+                b = Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])(?=.*\\s)[A-Za-z\\d\\s@$!%*?&]{12,14}", text);
 
                 MyLog.d(b + " " + text + " " + text.length());
 
@@ -74,9 +75,10 @@ public class LastNameFragment extends Fragment implements RotationDetectorInitCl
     @Override
     public void onRotationForward() {
         ((MainActivity) requireActivity()).addToDataList(inputField.getText().toString(), MainActivity.LAST_NAME_INDEX);
-
-        action = LastNameFragmentDirections.actionLastNameFragmentToAgeFragment();
-        rotationDetectorInitClass.navigate(action);
+        if (b) {
+            action = LastNameFragmentDirections.actionLastNameFragmentToAgeFragment();
+            rotationDetectorInitClass.navigate(action);
+        }
     }
 
     @Override

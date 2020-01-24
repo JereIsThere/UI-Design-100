@@ -53,7 +53,10 @@ public class AgeFragment extends Fragment implements RotationDetectorInitClass.O
 
     @Override
     public void onRotationForward() {
+        ((MainActivity) requireActivity()).addToDataList(valView.getText().toString(), MainActivity.AGE_INDEX);
 
+        action = AgeFragmentDirections.actionAgeFragmentToBirthdayFragment();
+        rotationDetectorInitClass.navigate(action);
     }
 
     @Override
