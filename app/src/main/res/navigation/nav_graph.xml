@@ -34,5 +34,17 @@
         <action
             android:id="@+id/action_lastNameFragment_to_phoneNumberFragment"
             app:destination="@id/phoneNumberFragment" />
+        <action
+            android:id="@+id/action_lastNameFragment_to_ageFragment"
+            app:destination="@id/ageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ageFragment"
+        android:name="com.example.ui_design_100.AgeFragment"
+        android:label="fragment_age"
+        tools:layout="@layout/fragment_age">
+        <action
+            android:id="@+id/action_ageFragment_to_lastNameFragment"
+            app:destination="@id/lastNameFragment" />
     </fragment>
 </navigation>

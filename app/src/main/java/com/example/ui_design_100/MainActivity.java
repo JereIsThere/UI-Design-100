@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int FIRST_NAME_INDEX = 0;
     public static final int PHONE_NUMBER_INDEX = 1;
     public static final int LAST_NAME_INDEX = 2;
+    public static final int AGE_INDEX = 3;
 
 
     private List<String> dataList = new ArrayList<>();

@@ -4,9 +4,22 @@
     <string name="str_firstNameInfo">Please input your name below:</string>
     <string name="str_firstName_sbInfo">Dropdown count: %d</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="btn_firstFrag_next">next</string>
     <string name="str_tv_phoneNumber_info">please input phone number:</string>
     <string name="str_tv_phoneNumber_sliderValue">Phone number = 0%1$d%2$d</string>
+
     <string name="str_tv_lastName_info">input secure last name:</string>
+    <string name="str_lastName_inputTv_nameInput">Name</string>
+    <string name="str_tv_lastName_regexDisplay">
+        \n
+        Between 12 and 14 characters \n
+        At least one lowercase letter \n
+        At least one uppercase letter \n
+        At least one number \n
+        At least one special character (@$!%*?&amp;) \n
+        At least one space
+    </string>
+
+    <string name="str_tv_age_info">Please input your age:</string>
+    <string name="str_tv_age_value">%d</string>
+    <string name="str_age_instruction">Shake to change</string>
 </resources>

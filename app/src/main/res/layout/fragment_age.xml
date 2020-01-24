@@ -2,49 +2,47 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout3"
+    android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LastNameFragment">
+    tools:context=".AgeFragment">
 
     <TextView
-        android:id="@+id/tv_lastName_info"
+        android:id="@+id/tv_age_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/str_tv_lastName_info"
+        android:text="@string/str_tv_age_info"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
-
-    <EditText
-        android:id="@+id/et_lastName_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autofillHints="0"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/str_lastName_inputTv_nameInput"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_lastName_info"
-        app:layout_constraintVertical_bias="0.486" />
+        app:layout_constraintVertical_bias="0.3" />
 
     <TextView
-        android:id="@+id/tv_lastName_regexCheck"
+        android:id="@+id/tv_age_valView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/str_tv_lastName_regexDisplay"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/et_lastName_input"
+        android:text="@string/str_tv_age_value"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_age_instruction"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_lastName_info"
-        app:layout_constraintVertical_bias="0.504" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_age_info"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/tv_age_instruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/str_age_instruction"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_age_info"
+        app:layout_constraintVertical_bias="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
