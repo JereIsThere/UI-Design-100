@@ -1,8 +1,11 @@
 package com.example.ui_design_100;
 
+import android.content.Context;
+import android.content.res.Configuration;
+
 import java.util.ArrayList;
 
-public class ConverterClass {
+public class ConverterAndInfoClass {
 
     public static final String[] units = {
             "", "one", "two", "three", "four", "five", "six", "seven",
@@ -74,6 +77,21 @@ public class ConverterClass {
         }
 
         return number;
+    }
+
+    public static boolean isDarkMode(Context context) {
+        int nightModeFlags =
+                context.getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                return true;
+
+            case Configuration.UI_MODE_NIGHT_NO:
+            default:
+                return false;
+        }
     }
 
 }

@@ -75,7 +75,7 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
             @Override
             public void afterTextChanged(Editable s) {
                 String text = inputView.getText().toString();
-                number = ConverterClass.convertToInt(text, 31);
+                number = ConverterAndInfoClass.convertToInt(text, 31);
 
                 if (number == 0) {
                     number = 1;
@@ -85,7 +85,7 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
             }
         });
 
-        textView.setText(String.format(getResources().getString(R.string.str_tv_birthday_info), 1, "st", "january"));
+        textView.setText(String.format(getResources().getString(R.string.str_tv_birthday_info), 1, "st", "January"));
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override

@@ -54,10 +54,10 @@ public class LastNameFragment extends Fragment implements RotationDetectorInitCl
                 b = Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])(?=.*\\s)[A-Za-z\\d\\s@$!%*?&]{12,14}", text);
 
                 if (b) {
-                    regexCheckView.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+                    regexCheckView.setTextColor(getResources().getColor(R.color.colorAccent));
 
                 } else {
-                    regexCheckView.setTextColor(getResources().getColor(R.color.colorAccent));
+                    regexCheckView.setTextColor(getResources().getColor(R.color.colorAccent2));
                 }
 
             }

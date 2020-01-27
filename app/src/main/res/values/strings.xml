@@ -26,4 +26,7 @@
     <string name="str_tv_birthday_info">Please input birthday: \n
                                         %d%s of %s</string>
     <string name="str_et_birtday_info">day (eg twenty one) here</string>
+
+    <string name="str_tv_start_info">Welcome to the registration process of your very own</string>
+    <string name="str_tv_start_info2">account. \n\nPerform a rotating motion with two fingers to continue.</string>
 </resources>
