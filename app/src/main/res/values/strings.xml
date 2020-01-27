@@ -23,5 +23,7 @@
     <string name="str_tv_age_value">%d</string>
     <string name="str_age_instruction">Shake to change</string>
 
-    <string name="str_tv_birthday_info">Please input birthday:</string>
+    <string name="str_tv_birthday_info">Please input birthday: \n
+                                        %d%s of %s</string>
+    <string name="str_et_birtday_info">day (eg twenty one) here</string>
 </resources>

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_firstNameMainFragment_to_phoneNumberFragment"
             app:destination="@id/phoneNumberFragment" />
+        <action
+            android:id="@+id/action_firstNameMainFragment_to_birthdayFragment2"
+            app:destination="@id/birthdayFragment" />
     </fragment>
     <fragment
         android:id="@+id/phoneNumberFragment"

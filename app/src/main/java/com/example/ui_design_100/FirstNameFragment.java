@@ -116,7 +116,12 @@ public class FirstNameFragment extends Fragment implements RotationDetectorInitC
     public void onRotationForward() {
         ((MainActivity) requireActivity()).addToDataList(getName(), MainActivity.FIRST_NAME_INDEX);
 
+        //to right fragment
         NavDirections action = FirstNameFragmentDirections.actionFirstNameMainFragmentToPhoneNumberFragment();
+
+        //to birthday fragment
+        //NavDirections action = FirstNameFragmentDirections.actionFirstNameMainFragmentToBirthdayFragment2();
+
         Navigation.findNavController(getView()).navigate(action);
     }
 

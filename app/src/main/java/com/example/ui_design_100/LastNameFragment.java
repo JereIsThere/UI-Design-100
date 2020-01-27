@@ -53,9 +53,6 @@ public class LastNameFragment extends Fragment implements RotationDetectorInitCl
                 Matcher m = p.matcher(text);
                 b = Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])(?=.*\\s)[A-Za-z\\d\\s@$!%*?&]{12,14}", text);
 
-                MyLog.d(b + " " + text + " " + text.length());
-
-
                 if (b) {
                     regexCheckView.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
 
