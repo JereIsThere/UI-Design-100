@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/startFragment">
+    app:startDestination="@id/birthdayFragment">
 
     <fragment
         android:id="@+id/firstNameMainFragment"
@@ -58,6 +58,9 @@
         <action
             android:id="@+id/action_birthdayFragment_to_ageFragment"
             app:destination="@id/ageFragment" />
+        <action
+            android:id="@+id/action_birthdayFragment_to_endFragment"
+            app:destination="@id/endFragment" />
     </fragment>
     <fragment
         android:id="@+id/startFragment"
@@ -68,4 +71,9 @@
             android:id="@+id/action_startFragment_to_firstNameMainFragment"
             app:destination="@id/firstNameMainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/endFragment"
+        android:name="com.example.ui_design_100.EndFragment"
+        android:label="fragment_end"
+        tools:layout="@layout/fragment_end" />
 </navigation>

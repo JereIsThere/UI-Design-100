@@ -1,19 +1,23 @@
 <resources>
-    <string name="app_name">UI-Design-100</string>
+	<string name="app_name">Soosoft registration wizard</string>
 
-    <string name="str_tv_start_info">Welcome to the registration process of your very own</string>
-    <string name="str_tv_start_info2">account. \n\nPerform a rotating motion with two fingers to continue.</string>
+	<!-- start fragment -->
+	<string name="str_tv_start_info">Welcome to the registration process of your very own</string>
+	<string name="str_tv_start_info2">account. \n\nPerform a rotating motion with two fingers to continue.</string>
 
-    <string name="str_firstNameInfo">Please input your name below:</string>
-    <string name="str_firstName_sbInfo">Letters: %d</string>
-    <string name="str_tv_firstName_value">The name is %s.</string>
+	<!-- first name fragment -->
+	<string name="str_firstNameInfo">Please input your name below:</string>
+	<string name="str_firstName_sbInfo">Letters: %d</string>
+	<string name="str_tv_firstName_value">The name is %s.</string>
 
-    <string name="str_tv_phoneNumber_info">please input phone number:</string>
-    <string name="str_tv_phoneNumber_sliderValue">Phone number = 0%1$d%2$d</string>
+	<!-- phone number fragment -->
+	<string name="str_tv_phoneNumber_info">please input phone number:</string>
+	<string name="str_tv_phoneNumber_sliderValue">Phone number = 0%1$d%2$d</string>
 
-    <string name="str_tv_lastName_info">input secure last name:</string>
-    <string name="str_et_lastName_inputTv_nameInput">secure last name</string>
-    <string name="str_tv_lastName_regexDisplay">
+	<!-- last name fragment -->
+	<string name="str_tv_lastName_info">input secure last name:</string>
+	<string name="str_et_lastName_inputTv_nameInput">secure last name</string>
+	<string name="str_tv_lastName_regexDisplay">
         \n
         Between 12 and 14 characters \n
         At least one lowercase letter \n
@@ -23,18 +27,25 @@
         At least one space
     </string>
 
-    <string name="str_tv_age_info">Please input your age:</string>
-    <string name="str_tv_age_value">%d</string>
-    <string name="str_age_instruction">Shake to change</string>
+	<!-- age fragment -->
+	<string name="str_tv_age_info">Please input your age:</string>
+	<string name="str_tv_age_value">%d</string>
+	<string name="str_age_instruction">Shake to change</string>
 
-    <string name="str_tv_birthday_info">Please input birthday: \n
-                                        %d%s of %s</string>
-    <string name="str_et_birtday_info">day (eg twenty one) here</string>
+	<!-- birthday fragment -->
+	<string name="str_tv_birthday_info">
+		Please input birthday: \n
+		%d%s of %s
+	</string>
+	<string name="str_et_birtday_info">day (eg twenty one) here</string>
 
-    <string name="str_tv_end_info">Congratulations! You\'ve entered the following data:\n
-                                    First name: %s\n
-                                    Phone number: %s\n
-                                    Last name: %s\n
-                                    Age: %s\n
-                                    Birthday: %s\n</string>
+	<!-- end Fragment -->
+	<string name="str_tv_end_info">
+        Congratulations! You\'ve entered the following data:\n\n
+        First name: %s\
+        Phone number: %s\n
+        Last name: %s\n
+        Age: %s\n
+        Birthday: %s\n
+    </string>
 </resources>

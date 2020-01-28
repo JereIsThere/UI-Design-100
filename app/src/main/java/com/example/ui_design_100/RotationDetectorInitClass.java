@@ -10,10 +10,9 @@ import androidx.navigation.Navigation;
 public class RotationDetectorInitClass implements RotationGestureDetector.OnRotationGestureListener {
     private RotationGestureDetector mRotationDetector;
     private OnRotationListener onRotationListener;
-    private int maxAngle = 60;
     private Fragment fragment;
 
-    public RotationDetectorInitClass(Fragment fragment, OnRotationListener onRotationListener) {
+    RotationDetectorInitClass(Fragment fragment, OnRotationListener onRotationListener) {
         this.fragment = fragment;
         this.onRotationListener = onRotationListener;
         this.mRotationDetector = new RotationGestureDetector(this);
@@ -30,21 +29,37 @@ public class RotationDetectorInitClass implements RotationGestureDetector.OnRota
     @Override
     public void OnRotation(RotationGestureDetector rotationDetector) {
         float angle = rotationDetector.getAngle();
-        if (angle < -this.maxAngle) {
+        int maxAngle = 60;
+
+
+        if (angle < -maxAngle) {
             this.onRotationListener.onRotationForward();
-        } else if (angle > this.maxAngle) {
+        } else if (angle > maxAngle) {
             this.onRotationListener.onRotationBackwards();
         }
     }
 
-    public void navigate(NavDirections action) {
-        Navigation.findNavController(fragment.getView()).navigate(action);
+    /**
+     * a shortcut for navigating between fragments using the navGraph.
+     *
+     * @param action the NavDirection, for example FirstFragmentDirections.actionFirstFragmentToSecondFragment()
+     */
+    void navigate(NavDirections action) {
+        Navigation.findNavController(fragment.requireView()).navigate(action);
     }
 
     public interface OnRotationListener {
 
+        /**
+         * the main method for changing to the next fragment.
+         * uses a rotation of a set amount of degrees to decide.
+         */
         void onRotationForward();
 
+        /**
+         * the main method for changing to the previous fragment.
+         * uses a rotation of a set amount of degrees to decide.
+         */
         void onRotationBackwards();
 
     }

@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int LAST_NAME_INDEX = 2;
     public static final int AGE_INDEX = 3;
     public static final int BIRTHDAY_INDEX = 4;
+
     private long storedTime;
 
     private List<String> dataList = new ArrayList<>();
@@ -42,12 +43,38 @@ public class MainActivity extends AppCompatActivity {
         this.storedTime = storedTime;
     }
 
+
+    /**
+     * adds a String to the datalist (ArrayList) in the MainActivity.
+     *
+     * @param var   the String to be added
+     * @param index the index where it should go
+     */
     public void addToDataList(String var, int index) {
+
+        //checks if the index to set is available
         if (this.dataList.size() <= index) {
+
+            //if not, this creates every index after the ones, that exist
+            for (int i = 0; i < index; i++) {
+                if (i >= dataList.size()) {
+                    this.dataList.add("error");
+                }
+            }
+
             this.dataList.add(index, var);
         } else {
             this.dataList.set(index, var);
         }
     }
 
+    /**
+     * returns a {@link String} from the {@link MainActivity#dataList}. Do I really need to comment this?
+     *
+     * @param i index of list
+     * @return {@link String}
+     */
+    public String getFromDataList(int i) {
+        return dataList.get(i);
+    }
 }

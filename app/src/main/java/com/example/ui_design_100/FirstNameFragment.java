@@ -61,11 +61,15 @@ public class FirstNameFragment extends Fragment implements RotationDetectorInitC
         this.valuesOfSpinners = new ArrayList<>();
         res = getResources();
 
+        //sets the value of the tv for the first time to hide the placeholder
         updateTv_firstName_dropDownCount(0);
 
+        //sets the changeListener for the seekbar
         this.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                //sets tht text in the dropDownCount, sets the spinners to the value
+                // they had before anything changed and adds new ones
                 updateTv_firstName_dropDownCount(progress);
                 setSpinners();
                 updateNameView();
@@ -82,10 +86,14 @@ public class FirstNameFragment extends Fragment implements RotationDetectorInitC
             }
         });
 
+        //sets the name for the first time to hide the placeholder
         String nameInit = String.format(res.getString(R.string.str_tv_firstName_value), "");
         nameView.setText(nameInit);
     }
 
+    /**
+     * Sets the spinners to the values saved in the {@link FirstNameFragment#valuesOfSpinners} ArrayList
+     */
     private void setSpinners() {
         int min = Integer.min(valuesOfSpinners.size(), seekBar.getProgress());
 
@@ -103,6 +111,11 @@ public class FirstNameFragment extends Fragment implements RotationDetectorInitC
 
     }
 
+    /**
+     * updates the dropDownCount textView and creates new spinners in the {@link FlexboxLayout}
+     *
+     * @param amount the amount of spinners to create
+     */
     private void updateTv_firstName_dropDownCount(int amount) {
         String seekBarText = String.format(res.getString(R.string.str_firstName_sbInfo), this.seekBar.getProgress());
         this.valView.setText(seekBarText);
@@ -120,6 +133,9 @@ public class FirstNameFragment extends Fragment implements RotationDetectorInitC
         }
     }
 
+    /**
+     * creates an amount of {@link Spinner} in the {@link FlexboxLayout}
+     */
     private Spinner createSpinner() {
         Spinner s = new Spinner(getContext());
 
@@ -132,6 +148,7 @@ public class FirstNameFragment extends Fragment implements RotationDetectorInitC
         s.setTextAlignment(Spinner.TEXT_ALIGNMENT_CENTER);
         s.setAdapter(adapter);
 
+        //creates listeners for every spinner
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -146,6 +163,9 @@ public class FirstNameFragment extends Fragment implements RotationDetectorInitC
         return s;
     }
 
+    /**
+     * updates the name textView placeholder
+     */
     private void updateNameView() {
         String insertedText = getName();
 
@@ -158,6 +178,10 @@ public class FirstNameFragment extends Fragment implements RotationDetectorInitC
         nameView.setText(text);
     }
 
+    /**
+     * creates the name all the spinners spell and returns it
+     * @return the name all the spinners spell
+     */
     private String getName() {
         StringBuilder name = new StringBuilder();
         valuesOfSpinners.clear();

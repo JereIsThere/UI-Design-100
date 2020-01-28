@@ -46,6 +46,8 @@ public class AgeFragment extends Fragment implements RotationDetectorInitClass.O
 
         rotationDetectorInitClass = new RotationDetectorInitClass(this, this);
         valView = getView().findViewById(R.id.tv_age_valView);
+
+        //sets text for the first time, to not show the placeholder
         valView.setText("0");
 
 
@@ -69,6 +71,7 @@ public class AgeFragment extends Fragment implements RotationDetectorInitClass.O
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //adding and setting the shakeDetector
         ShakeOptions options = new ShakeOptions()
                 .background(true)
                 .interval(750)

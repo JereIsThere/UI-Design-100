@@ -62,6 +62,7 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
         inputView = getView().findViewById(R.id.et_birtday_input);
         textView = getView().findViewById(R.id.tv_birthday_info);
 
+        //adding a textChangedListener, which works in unison with the dateChangedListener
         inputView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -74,9 +75,12 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
 
             @Override
             public void afterTextChanged(Editable s) {
+                //gets the text from the input view
                 String text = inputView.getText().toString();
+                //converts the text into int
                 number = ConverterAndInfoClass.convertToInt(text, 31);
 
+                //makes sure the day can't be "the 0th"
                 if (number == 0) {
                     number = 1;
                 }
@@ -85,31 +89,41 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
             }
         });
 
+        //sets the text for the first time to hide placeholders
         textView.setText(String.format(getResources().getString(R.string.str_tv_birthday_info), 1, "st", "January"));
 
+        //adds a dateChangeListener, works parallel to the changeListener from the input field
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                //converts the month into a string and saves it in the field
                 setMonth(new DateFormatSymbols().getMonths()[month]);
+                //saves the date as ints for later use
                 setDate(month + 1 + "/" + dayOfMonth + "/" + year);
+
                 updateTextView();
             }
         });
 
-
+        //initializes the "date" field
         Date date = Calendar.getInstance().getTime();
         DateFormat dateFormat = new SimpleDateFormat("M/d/yyyy", Locale.GERMAN);
         String strDate = dateFormat.format(date);
 
         this.date = strDate;
-        MyLog.d(this.date);
-
     }
+
+    /**
+     * updates the textview from the {@link BirthdayFragment#date} and the {@link BirthdayFragment#month} fields, generates the ending for the number
+     */
 
     private void updateTextView() {
         String end;
-        String month = this.month == null ? new SimpleDateFormat("MMMM", Locale.UK).format(new Date()) : this.month;
+        //protects from a nullPointerException by using the current month for a month when the month is null
+        String month = this.month == null ? new SimpleDateFormat("MMMM", Locale.GERMAN).format(new Date()) : this.month;
+        this.month = month;
 
+        //gets the last digit from the number and sets the ending
         String numberString = String.valueOf(number);
         int lastNumber = Integer.valueOf(String.valueOf(numberString.charAt(numberString.length() - 1)));
 
@@ -127,6 +141,7 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
                 end = "th";
         }
 
+        //check if the input day is possible for the selected month
         LocalDate convertedDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("M/d/yyyy"));
         convertedDate = convertedDate.withDayOfMonth(convertedDate.getMonth().length(convertedDate.isLeapYear()));
 
@@ -136,6 +151,7 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
             number = lengthOfMonth;
         }
 
+        //sets the text on the textview
         String sourceString = getResources().getString(R.string.str_tv_birthday_info);
         String text = String.format(sourceString, number, end, month);
 
@@ -144,6 +160,14 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
 
     @Override
     public void onRotationForward() {
+        //checks if the number is just one digit, if yes it adds a "0"
+        String text = (number >= 10 ? "" : "0") + number + " / " + month;
+
+        //sets the value of the date in the datalist
+        ((MainActivity) getActivity()).addToDataList(text, MainActivity.BIRTHDAY_INDEX);
+
+        action = BirthdayFragmentDirections.actionBirthdayFragmentToEndFragment();
+        rotationDetectorInitClass.navigate(action);
     }
 
     @Override
