@@ -30,4 +30,11 @@
     <string name="str_tv_birthday_info">Please input birthday: \n
                                         %d%s of %s</string>
     <string name="str_et_birtday_info">day (eg twenty one) here</string>
+
+    <string name="str_tv_end_info">Congratulations! You\'ve entered the following data:\n
+                                    First name: %s\n
+                                    Phone number: %s\n
+                                    Last name: %s\n
+                                    Age: %s\n
+                                    Birthday: %s\n</string>
 </resources>

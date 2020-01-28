@@ -54,7 +54,10 @@ public class StartFragment extends Fragment implements RotationDetectorInitClass
 
     @Override
     public void onRotationForward() {
-        //right fragment nav
+        long time = System.currentTimeMillis();
+
+        ((MainActivity) getActivity()).setStoredTime(time);
+
         Navigation.findNavController(getView()).navigate(StartFragmentDirections.actionStartFragmentToFirstNameMainFragment());
     }
 

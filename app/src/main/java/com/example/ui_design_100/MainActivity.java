@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int LAST_NAME_INDEX = 2;
     public static final int AGE_INDEX = 3;
     public static final int BIRTHDAY_INDEX = 4;
-
+    private long storedTime;
 
     private List<String> dataList = new ArrayList<>();
 
@@ -32,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public View onCreateView(@NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
         return super.onCreateView(name, context, attrs);
+    }
+
+    public long getStoredTime() {
+        return storedTime;
+    }
+
+    public void setStoredTime(long storedTime) {
+        this.storedTime = storedTime;
     }
 
     public void addToDataList(String var, int index) {
