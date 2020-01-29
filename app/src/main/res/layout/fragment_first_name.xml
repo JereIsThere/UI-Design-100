@@ -1,85 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".FirstNameFragment">
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/frameLayout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".FirstNameFragment">
 
-    <TextView
-        android:id="@+id/tv_firstName_Info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/str_firstNameInfo"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
+	<TextView
+		android:id="@+id/tv_firstName_Info"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/str_firstNameInfo"
+		android:textSize="24sp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.2" />
 
-    <SeekBar
-        android:id="@+id/sb_firstName_dropdownCount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginBottom="24dp"
-        android:max="10"
-        android:minWidth="200sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_firstName_Info"
-        app:layout_constraintVertical_bias="0.2" />
+	<SeekBar
+		android:id="@+id/sb_firstName_dropdownCount"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="24dp"
+		android:layout_marginLeft="24dp"
+		android:layout_marginTop="24dp"
+		android:layout_marginEnd="24dp"
+		android:layout_marginRight="24dp"
+		android:layout_marginBottom="24dp"
+		android:max="10"
+		android:minWidth="200sp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/tv_firstName_Info"
+		app:layout_constraintVertical_bias="0.2" />
 
-    <TextView
-        android:id="@+id/tv_firstName_sbVals"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginBottom="24dp"
-        android:text="@string/str_firstName_sbInfo"
-        app:layout_constraintBottom_toTopOf="@+id/sb_firstName_dropdownCount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_firstName_Info" />
+	<TextView
+		android:id="@+id/tv_firstName_sbVals"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="24dp"
+		android:layout_marginLeft="24dp"
+		android:layout_marginTop="24dp"
+		android:layout_marginEnd="24dp"
+		android:layout_marginRight="24dp"
+		android:layout_marginBottom="24dp"
+		android:text="@string/str_firstName_sbInfo"
+		app:layout_constraintBottom_toTopOf="@+id/sb_firstName_dropdownCount"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/tv_firstName_Info" />
 
-    <com.google.android.flexbox.FlexboxLayout
-        android:id="@+id/ll_firstName_layout"
-        android:layout_width="0sp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginBottom="24dp"
-        app:alignContent="stretch"
-        app:alignItems="stretch"
-        app:flexWrap="wrap"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sb_firstName_dropdownCount" />
+	<com.google.android.flexbox.FlexboxLayout
+		android:id="@+id/ll_firstName_layout"
+		android:layout_width="0sp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="24dp"
+		android:layout_marginLeft="24dp"
+		android:layout_marginTop="24dp"
+		android:layout_marginEnd="24dp"
+		android:layout_marginRight="24dp"
+		android:layout_marginBottom="24dp"
+		app:alignContent="stretch"
+		app:alignItems="stretch"
+		app:flexWrap="wrap"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/sb_firstName_dropdownCount" />
 
-    <TextView
-        android:id="@+id/tv_firstName_nameValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/str_tv_firstName_value"
-        app:layout_constraintBottom_toTopOf="@+id/ll_firstName_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sb_firstName_dropdownCount" />
+	<TextView
+		android:id="@+id/tv_firstName_nameValue"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/str_tv_firstName_value"
+		app:layout_constraintBottom_toTopOf="@+id/ll_firstName_layout"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/sb_firstName_dropdownCount" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

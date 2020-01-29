@@ -24,6 +24,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 
 /**
@@ -34,7 +35,6 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
     private RotationDetectorInitClass rotationDetectorInitClass;
     private NavDirections action;
 
-    private CalendarView calendarView;
     private EditText inputView;
     private TextView textView;
 
@@ -58,8 +58,8 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
         super.onViewCreated(view, savedInstanceState);
 
         rotationDetectorInitClass = new RotationDetectorInitClass(this, this);
-        calendarView = getView().findViewById(R.id.cv_birthday_calendar);
-        inputView = getView().findViewById(R.id.et_birtday_input);
+        CalendarView calendarView = Objects.requireNonNull(getView()).findViewById(R.id.cv_birthday_calendar);
+        inputView = getView().findViewById(R.id.et_birthday_input);
         textView = getView().findViewById(R.id.tv_birthday_info);
 
         //adding a textChangedListener, which works in unison with the dateChangedListener
@@ -86,6 +86,7 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
                 }
 
                 updateTextView();
+                rotationDetectorInitClass.setFullscreen();
             }
         });
 
@@ -108,15 +109,13 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
         //initializes the "date" field
         Date date = Calendar.getInstance().getTime();
         DateFormat dateFormat = new SimpleDateFormat("M/d/yyyy", Locale.GERMAN);
-        String strDate = dateFormat.format(date);
 
-        this.date = strDate;
+        this.date = dateFormat.format(date);
     }
 
     /**
-     * updates the textview from the {@link BirthdayFragment#date} and the {@link BirthdayFragment#month} fields, generates the ending for the number
+     * updates the textView from the {@link BirthdayFragment#date} and the {@link BirthdayFragment#month} fields, generates the ending for the number
      */
-
     private void updateTextView() {
         String end;
         //protects from a nullPointerException by using the current month for a month when the month is null
@@ -151,7 +150,7 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
             number = lengthOfMonth;
         }
 
-        //sets the text on the textview
+        //sets the text on the textView
         String sourceString = getResources().getString(R.string.str_tv_birthday_info);
         String text = String.format(sourceString, number, end, month);
 
@@ -164,7 +163,7 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
         String text = (number >= 10 ? "" : "0") + number + " / " + month;
 
         //sets the value of the date in the datalist
-        ((MainActivity) getActivity()).addToDataList(text, MainActivity.BIRTHDAY_INDEX);
+        ((MainActivity) Objects.requireNonNull(getActivity())).addToDataList(text, MainActivity.BIRTHDAY_INDEX);
 
         action = BirthdayFragmentDirections.actionBirthdayFragmentToEndFragment();
         rotationDetectorInitClass.navigate(action);
@@ -176,11 +175,17 @@ public class BirthdayFragment extends Fragment implements RotationDetectorInitCl
         rotationDetectorInitClass.navigate(action);
     }
 
-    public void setMonth(String month) {
+    /**
+     * @param month the written month
+     */
+    private void setMonth(String month) {
         this.month = month;
     }
 
-    public void setDate(String date) {
+    /**
+     * @param date the date as a string
+     */
+    private void setDate(String date) {
         this.date = date;
     }
 }

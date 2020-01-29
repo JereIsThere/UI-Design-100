@@ -2,13 +2,13 @@ package com.example.ui_design_100;
 
 import android.view.MotionEvent;
 
-public class RotationGestureDetector {
+class RotationGestureDetector {
     private static final int INVALID_POINTER_ID = -1;
     private float fX, fY, sX, sY;
     private int ptrID1, ptrID2;
     private float mAngle;
 
-    private OnRotationGestureListener mListener;
+    private final OnRotationGestureListener mListener;
 
     public RotationGestureDetector(OnRotationGestureListener listener) {
         mListener = listener;
@@ -20,7 +20,7 @@ public class RotationGestureDetector {
         return mAngle;
     }
 
-    public boolean onTouchEvent(MotionEvent event) {
+    public void onTouchEvent(MotionEvent event) {
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
                 ptrID1 = event.getPointerId(event.getActionIndex());
@@ -58,7 +58,6 @@ public class RotationGestureDetector {
                 ptrID2 = INVALID_POINTER_ID;
                 break;
         }
-        return true;
     }
 
     private float angleBetweenLines(float fX, float fY, float sX, float sY, float nfX, float nfY, float nsX, float nsY) {

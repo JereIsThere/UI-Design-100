@@ -8,22 +8,37 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 public class RotationDetectorInitClass implements RotationGestureDetector.OnRotationGestureListener {
-    private RotationGestureDetector mRotationDetector;
-    private OnRotationListener onRotationListener;
-    private Fragment fragment;
+    private final RotationGestureDetector mRotationDetector;
+    private final OnRotationListener onRotationListener;
+    private final Fragment fragment;
 
+    /**
+     * Constructor to initialize the rotationListener.
+     *
+     * @param fragment           the current fragment in which this is implemented
+     * @param onRotationListener something which implements the {@link OnRotationListener} Interface (typically the fragment itself)
+     */
     RotationDetectorInitClass(Fragment fragment, OnRotationListener onRotationListener) {
         this.fragment = fragment;
         this.onRotationListener = onRotationListener;
         this.mRotationDetector = new RotationGestureDetector(this);
 
-        fragment.getView().setOnTouchListener(new View.OnTouchListener() {
+        fragment.requireView().setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 mRotationDetector.onTouchEvent(event);
                 return true;
             }
         });
+
+        setFullscreen();
+    }
+
+    /**
+     * a method to quickly toggle fullscreen to avoid hardcodes
+     */
+    void setFullscreen() {
+        fragment.requireView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
 
     @Override
@@ -48,11 +63,15 @@ public class RotationDetectorInitClass implements RotationGestureDetector.OnRota
         Navigation.findNavController(fragment.requireView()).navigate(action);
     }
 
+    /**
+     * Interface which defines the {@link #onRotationForward()} and the {@link #onRotationBackwards()} methods.
+     */
     public interface OnRotationListener {
 
         /**
          * the main method for changing to the next fragment.
          * uses a rotation of a set amount of degrees to decide.
+         * Typically has a call to add something to a datalist in it.
          */
         void onRotationForward();
 

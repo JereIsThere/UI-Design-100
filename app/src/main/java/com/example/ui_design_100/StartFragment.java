@@ -14,6 +14,8 @@ import androidx.navigation.Navigation;
 
 import com.bumptech.glide.Glide;
 
+import java.util.Objects;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,14 +23,9 @@ import com.bumptech.glide.Glide;
 public class StartFragment extends Fragment implements RotationDetectorInitClass.OnRotationListener {
 
 
-    private RotationDetectorInitClass rotationDetectorInitClass;
-
-    private ImageView imageView;
-
     public StartFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,15 +34,22 @@ public class StartFragment extends Fragment implements RotationDetectorInitClass
         return inflater.inflate(R.layout.fragment_start, container, false);
     }
 
+    /**
+     * sets the image depending on the UI-mode
+     *
+     * @param view               {@link View}
+     * @param savedInstanceState {@link Bundle}
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        rotationDetectorInitClass = new RotationDetectorInitClass(this, this);
+        RotationDetectorInitClass rotationDetectorInitClass = new RotationDetectorInitClass(this, this);
 
-        imageView = getView().findViewById(R.id.iv_start_soosoffice);
+        ImageView imageView = Objects.requireNonNull(getView()).findViewById(R.id.iv_start_soosoffice);
 
-        if (ConverterAndInfoClass.isDarkMode(getContext())) {
+        //sets the image depending on if the dark mode is on
+        if (ConverterAndInfoClass.isDarkMode(Objects.requireNonNull(getContext()))) {
             Glide.with(getContext()).load(R.drawable.soosoffice_td).into(imageView);
         } else {
             Glide.with(getContext()).load(R.drawable.soosoffice_t).into(imageView);
@@ -56,9 +60,9 @@ public class StartFragment extends Fragment implements RotationDetectorInitClass
     public void onRotationForward() {
         long time = System.currentTimeMillis();
 
-        ((MainActivity) getActivity()).setStoredTime(time);
+        ((MainActivity) Objects.requireNonNull(getActivity())).setStoredTime(time);
 
-        Navigation.findNavController(getView()).navigate(StartFragmentDirections.actionStartFragmentToFirstNameMainFragment());
+        Navigation.findNavController(Objects.requireNonNull(getView())).navigate(StartFragmentDirections.actionStartFragmentToFirstNameMainFragment());
     }
 
     @Override

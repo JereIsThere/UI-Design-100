@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private long storedTime;
 
-    private List<String> dataList = new ArrayList<>();
+    private final List<String> dataList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +35,21 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateView(name, context, attrs);
     }
 
+    /**
+     * @return the currentTimeMillis stored in the {@link MainActivity#storedTime} field
+     */
     public long getStoredTime() {
         return storedTime;
     }
 
+    /**
+     * it's a setter for the {@link #storedTime} field.
+     *
+     * @param storedTime the currentTimeMillis value for {@link #storedTime} to be set to.
+     */
     public void setStoredTime(long storedTime) {
         this.storedTime = storedTime;
     }
-
 
     /**
      * adds a String to the datalist (ArrayList) in the MainActivity.

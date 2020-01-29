@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 
+import java.util.Objects;
+
 import safety.com.br.android_shake_detector.core.ShakeCallback;
 import safety.com.br.android_shake_detector.core.ShakeDetector;
 import safety.com.br.android_shake_detector.core.ShakeOptions;
@@ -22,6 +24,7 @@ import safety.com.br.android_shake_detector.core.ShakeOptions;
  */
 public class AgeFragment extends Fragment implements RotationDetectorInitClass.OnRotationListener {
 
+    private ShakeDetector shakeDetector;
 
     private NavDirections action;
     private RotationDetectorInitClass rotationDetectorInitClass;
@@ -45,7 +48,7 @@ public class AgeFragment extends Fragment implements RotationDetectorInitClass.O
         super.onViewCreated(view, savedInstanceState);
 
         rotationDetectorInitClass = new RotationDetectorInitClass(this, this);
-        valView = getView().findViewById(R.id.tv_age_valView);
+        valView = Objects.requireNonNull(getView()).findViewById(R.id.tv_age_valView);
 
         //sets text for the first time, to not show the placeholder
         valView.setText("0");
@@ -68,8 +71,8 @@ public class AgeFragment extends Fragment implements RotationDetectorInitClass.O
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onStart() {
+        super.onStart();
 
         //adding and setting the shakeDetector
         ShakeOptions options = new ShakeOptions()
@@ -78,7 +81,7 @@ public class AgeFragment extends Fragment implements RotationDetectorInitClass.O
                 .shakeCount(1)
                 .sensibility(2.0f);
 
-        ShakeDetector shakeDetector = new ShakeDetector(options).start(requireContext(), new ShakeCallback() {
+        shakeDetector = new ShakeDetector(options).start(requireContext(), new ShakeCallback() {
             @Override
             public void onShake() {
                 String str = String.format(getResources().getString(R.string.str_tv_age_value), ((int) ((Math.random() * 99) + 1)));
@@ -86,5 +89,12 @@ public class AgeFragment extends Fragment implements RotationDetectorInitClass.O
             }
         });
 
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        shakeDetector.stopShakeDetector(requireContext());
+        shakeDetector.destroy(requireContext());
     }
 }

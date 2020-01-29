@@ -6,15 +6,15 @@ import android.content.res.Configuration;
 /**
  * A class where converters (eg. {@link ConverterAndInfoClass#convertToInt(String, int)}) and information-returning methods (eg. {@link ConverterAndInfoClass#isDarkMode(Context)}) are placed.
  */
-public class ConverterAndInfoClass {
+class ConverterAndInfoClass {
 
-    public static final String[] units = {
+    private static final String[] units = {
             "", "one", "two", "three", "four", "five", "six", "seven",
             "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
             "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
     };
 
-    public static final String[] tens = {
+    private static final String[] tens = {
             "",        // 0
             "",        // 1
             "twenty",  // 2
@@ -27,7 +27,7 @@ public class ConverterAndInfoClass {
             "ninety"   // 9
     };
 
-    public static String convertToString(final int n) {
+    private static String convertToString(final int n) {
         if (n < 0) {
             return "minus " + convertToString(-n);
         }

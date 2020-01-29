@@ -21,13 +21,13 @@ import androidx.navigation.Navigation;
 import com.google.android.flexbox.FlexboxLayout;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FirstNameFragment extends Fragment implements RotationDetectorInitClass.OnRotationListener {
-
 
     private RotationDetectorInitClass rotationDetectorInitClass;
 
@@ -37,7 +37,7 @@ public class FirstNameFragment extends Fragment implements RotationDetectorInitC
     private FlexboxLayout flexboxLayout;
     private TextView nameView;
     private ArrayList<String> valuesOfSpinners;
-    private String[] arraySpinner = new String[]{
+    private final String[] arraySpinner = new String[]{
             "b", " ", "c", "a", "f", "g", "d", "h", "e", "i", "k", "j", "m", "4", "n", "l", "p", "o", "r", "q", "t", "s", "v", "u", "z", "y", "x", "B", " ", "C", "A", "F", "G", "D", "H", "E", "I", "K", "J", "M", "5", "N", "L", "P", "O", "R", "Q", "T", "S", "V", "U", "Z", "Y", "X"
     };
 
@@ -53,12 +53,12 @@ public class FirstNameFragment extends Fragment implements RotationDetectorInitC
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        this.seekBar = view.findViewById(R.id.sb_firstName_dropdownCount);
-        this.valView = view.findViewById(R.id.tv_firstName_sbVals);
-        this.flexboxLayout = view.findViewById(R.id.ll_firstName_layout);
-        this.rotationDetectorInitClass = new RotationDetectorInitClass(this, this);
-        this.nameView = view.findViewById(R.id.tv_firstName_nameValue);
-        this.valuesOfSpinners = new ArrayList<>();
+        seekBar = view.findViewById(R.id.sb_firstName_dropdownCount);
+        valView = view.findViewById(R.id.tv_firstName_sbVals);
+        flexboxLayout = view.findViewById(R.id.ll_firstName_layout);
+        rotationDetectorInitClass = new RotationDetectorInitClass(this, this);
+        nameView = view.findViewById(R.id.tv_firstName_nameValue);
+        valuesOfSpinners = new ArrayList<>();
         res = getResources();
 
         //sets the value of the tv for the first time to hide the placeholder
@@ -139,7 +139,7 @@ public class FirstNameFragment extends Fragment implements RotationDetectorInitC
     private Spinner createSpinner() {
         Spinner s = new Spinner(getContext());
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(Objects.requireNonNull(getContext()),
                 android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setMinimumWidth(100);
@@ -153,11 +153,13 @@ public class FirstNameFragment extends Fragment implements RotationDetectorInitC
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 updateNameView();
+                rotationDetectorInitClass.setFullscreen();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 updateNameView();
+                rotationDetectorInitClass.setFullscreen();
             }
         });
         return s;
@@ -180,6 +182,7 @@ public class FirstNameFragment extends Fragment implements RotationDetectorInitC
 
     /**
      * creates the name all the spinners spell and returns it
+     *
      * @return the name all the spinners spell
      */
     private String getName() {
@@ -202,7 +205,7 @@ public class FirstNameFragment extends Fragment implements RotationDetectorInitC
 
         NavDirections action = FirstNameFragmentDirections.actionFirstNameMainFragmentToPhoneNumberFragment();
 
-        Navigation.findNavController(getView()).navigate(action);
+        Navigation.findNavController(Objects.requireNonNull(getView())).navigate(action);
     }
 
     @Override

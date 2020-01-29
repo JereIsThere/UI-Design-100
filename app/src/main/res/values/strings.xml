@@ -37,15 +37,16 @@
 		Please input birthday: \n
 		%d%s of %s
 	</string>
-	<string name="str_et_birtday_info">day (eg twenty one) here</string>
+	<string name="str_et_birthday_info">day (eg twenty one) here</string>
 
 	<!-- end Fragment -->
-	<string name="str_tv_end_info">
-        Congratulations! You\'ve entered the following data:\n\n
+	<string name="str_tv_end_info">Congratulations! You\'ve entered the following data:</string>
+	<string name="str_tv_end_val">
         First name: %s\
         Phone number: %s\n
         Last name: %s\n
         Age: %s\n
         Birthday: %s\n
     </string>
+	<string name="str_tv_end_time">This took you %d%s.</string>
 </resources>
