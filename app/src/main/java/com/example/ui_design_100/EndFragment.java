@@ -17,7 +17,7 @@ import java.util.Objects;
 /**
  * A simple {@link Fragment} subclass.
  */
-class EndFragment extends Fragment {
+public class EndFragment extends Fragment {
 
     private TextView textView;
     private TextView timeView;
